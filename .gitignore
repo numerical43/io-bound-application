@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Ip 노출 방지 ###
+*/application.yaml
