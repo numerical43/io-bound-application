@@ -2,7 +2,7 @@ spring:
   datasource:
 #    url: jdbc:postgresql://localhost:5432/postgresql
     # 인스턴스 내부 ip
-    url: jdbc:postgresql://10.140.0.4:5432/postgresql
+    url:
     username: postgresql
     password: postgrespassword
   jpa:
