@@ -1,0 +1,18 @@
+config:
+  target: # test 하려는 서버의 외부 주소
+  phases:
+    - duration: 333
+      arrivalRate: 3
+      name: Warm up
+  payload:
+    path: "ratings_test_1k.csv"
+    fields:
+      - "content"
+scenarios:
+  # We define one scenario:
+  - name: "just post content"
+    flow:
+      - post:
+          url: "/post"
+          json:
+            content: "{{ content }}"

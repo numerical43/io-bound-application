@@ -1,0 +1,35 @@
+# 글 작성, 글 목록 조회를 함께 테스트
+config:
+  target: # test 하려는 서버의 외부 주소
+  phases:
+    # 1분동안 매초마다 3명씩 virtual user 생성
+    - duration: 60
+      arrivalRate: 3
+      name: Warm up
+    # 2분동안 3명씩, 총 50명의 virtual user 생성
+    - duration: 120
+      arrivalRate: 3
+      rampTo: 50
+      name: Ramp up load
+    # 10분동안 매초 10명 씩 virtual user 생성
+    - duration: 600
+      arrivalRate: 50
+      name: Sustained load
+  payload:
+    path: "ratings_test_10k.csv"
+    fields:
+      - "content"
+scenarios:
+  # We define one scenario:
+  - name: "just post content"
+    flow:
+      # post 요청
+      - post:
+          url: "/post"
+          json:
+            content: "{{ content }}"
+      # 1초 대기
+      - think: 1
+      # get 요청
+      - get:
+          url: "/posts"
