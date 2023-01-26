@@ -15,6 +15,7 @@ public class PostCacheService {
 
     private Page<Post> firstPostPage;
 
+    // cron 표현식
     @Scheduled(cron = "* * * * * * *")
     public void updateFirstPostPage() {
         firstPostPage = postRepository.findAll(
