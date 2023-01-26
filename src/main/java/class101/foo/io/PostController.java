@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 public class PostController {
 
-    private static Integer PAGE_SIZE = 20;
+    private static final Integer PAGE_SIZE = 20;
 
     @Autowired
     PostRepository postRepository;
@@ -27,7 +27,6 @@ public class PostController {
 
     @Autowired
     PostCacheService postCacheService;
-
 
     // 1. 글을 작성한다.
     @PostMapping("/post")
